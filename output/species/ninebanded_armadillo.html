@@ -1,0 +1,633 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Mosaico de imágenes</title>
+<style>
+:root{--gap:8px}
+body{font-family:system-ui, -apple-system, "Segoe UI", Roboto, Arial; margin:12px; background:#f7f7f7; color:#111}
+.container{max-width:1200px;margin:0 auto}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:var(--gap)}
+.card{position:relative;overflow:hidden;border-radius:6px;height:0;padding-bottom:75%;background:#ddd;box-shadow:0 1px 4px rgba(0,0,0,0.06)}
+.card img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;transition:transform .35s ease}
+.card:hover img{transform:scale(1.06)}
+.caption{position:absolute;left:6px;right:6px;bottom:6px;font-size:12px;background:rgba(0,0,0,0.45);color:#fff;padding:4px 6px;border-radius:4px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.lightbox-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.85);display:flex;align-items:center;justify-content:center;z-index:9999;padding:20px;visibility:hidden;opacity:0;transition:opacity .2s}
+.lightbox-overlay.visible{visibility:visible;opacity:1}
+.lightbox-content{max-width:100%;max-height:100%;text-align:center}
+.lightbox-content img{max-width:100%;max-height:80vh;box-shadow:0 8px 30px rgba(0,0,0,0.6)}
+.lightbox-caption{color:#fff;margin-top:10px;font-size:14px}
+.lightbox-close{position:absolute;top:12px;right:18px;color:#fff;font-size:28px;cursor:pointer}
+@media (max-width:420px){.caption{font-size:10px}}
+</style>
+</head>
+<body>
+<div class="container">
+<h1>Mosaico de imágenes</h1>
+<div class="grid">
+
+<a class="card" href="/media/cunzac/bioinformatica/users/mbarrios/proyectos/calmecac/ostua2025/camaras/input/semana30/camera08/IMG_0087.JPG" data-lightbox data-caption="IMG_0087.JPG">
+  <img src="/media/cunzac/bioinformatica/users/mbarrios/proyectos/calmecac/ostua2025/camaras/input/semana30/camera08/IMG_0087.JPG" loading="lazy" alt="IMG_0087.JPG">
+  <div class="caption">IMG_0087.JPG</div>
+</a>
+<a class="card" href="/media/cunzac/bioinformatica/users/mbarrios/proyectos/calmecac/ostua2025/camaras/input/semana30/camera08/IMG_0095.JPG" data-lightbox data-caption="IMG_0095.JPG">
+  <img src="/media/cunzac/bioinformatica/users/mbarrios/proyectos/calmecac/ostua2025/camaras/input/semana30/camera08/IMG_0095.JPG" loading="lazy" alt="IMG_0095.JPG">
+  <div class="caption">IMG_0095.JPG</div>
+</a>
+<a class="card" href="/media/cunzac/bioinformatica/users/mbarrios/proyectos/calmecac/ostua2025/camaras/input/semana30/camera08/IMG_0096.JPG" data-lightbox data-caption="IMG_0096.JPG">
+  <img src="/media/cunzac/bioinformatica/users/mbarrios/proyectos/calmecac/ostua2025/camaras/input/semana30/camera08/IMG_0096.JPG" loading="lazy" alt="IMG_0096.JPG">
+  <div class="caption">IMG_0096.JPG</div>
+</a>
+<a class="card" href="/media/cunzac/bioinformatica/users/mbarrios/proyectos/calmecac/ostua2025/camaras/input/semana30/camera08/IMG_0133.JPG" data-lightbox data-caption="IMG_0133.JPG">
+  <img src="/media/cunzac/bioinformatica/users/mbarrios/proyectos/calmecac/ostua2025/camaras/input/semana30/camera08/IMG_0133.JPG" loading="lazy" alt="IMG_0133.JPG">
+  <div class="caption">IMG_0133.JPG</div>
+</a>
+<a class="card" href="/media/cunzac/bioinformatica/users/mbarrios/proyectos/calmecac/ostua2025/camaras/input/semana30/camera08/IMG_0134.JPG" data-lightbox data-caption="IMG_0134.JPG">
+  <img src="/media/cunzac/bioinformatica/users/mbarrios/proyectos/calmecac/ostua2025/camaras/input/semana30/camera08/IMG_0134.JPG" loading="lazy" alt="IMG_0134.JPG">
+  <div class="caption">IMG_0134.JPG</div>
+</a>
+<a class="card" href="/media/cunzac/bioinformatica/users/mbarrios/proyectos/calmecac/ostua2025/camaras/input/semana30/camera08/IMG_0135.JPG" data-lightbox data-caption="IMG_0135.JPG">
+  <img src="/media/cunzac/bioinformatica/users/mbarrios/proyectos/calmecac/ostua2025/camaras/input/semana30/camera08/IMG_0135.JPG" loading="lazy" alt="IMG_0135.JPG">
+  <div class="caption">IMG_0135.JPG</div>
+</a>
+<a class="card" href="/media/cunzac/bioinformatica/users/mbarrios/proyectos/calmecac/ostua2025/camaras/input/semana30/camera08/IMG_0136.JPG" data-lightbox data-caption="IMG_0136.JPG">
+  <img src="/media/cunzac/bioinformatica/users/mbarrios/proyectos/calmecac/ostua2025/camaras/input/semana30/camera08/IMG_0136.JPG" loading="lazy" alt="IMG_0136.JPG">
+  <div class="caption">IMG_0136.JPG</div>
+</a>
+<a class="card" href="/media/cunzac/bioinformatica/users/mbarrios/proyectos/calmecac/ostua2025/camaras/input/semana30/camera08/IMG_0137.JPG" data-lightbox data-caption="IMG_0137.JPG">
+  <img src="/media/cunzac/bioinformatica/users/mbarrios/proyectos/calmecac/ostua2025/camaras/input/semana30/camera08/IMG_0137.JPG" loading="lazy" alt="IMG_0137.JPG">
+  <div class="caption">IMG_0137.JPG</div>
+</a>
+<a class="card" href="/media/cunzac/bioinformatica/users/mbarrios/proyectos/calmecac/ostua2025/camaras/input/semana30/camera08/IMG_0139.JPG" data-lightbox data-caption="IMG_0139.JPG">
+  <img src="/media/cunzac/bioinformatica/users/mbarrios/proyectos/calmecac/ostua2025/camaras/input/semana30/camera08/IMG_0139.JPG" loading="lazy" alt="IMG_0139.JPG">
+  <div class="caption">IMG_0139.JPG</div>
+</a>
+<a class="card" href="/media/cunzac/bioinformatica/users/mbarrios/proyectos/calmecac/ostua2025/camaras/input/semana30/camera09/IMG_0001.JPG" data-lightbox data-caption="IMG_0001.JPG">
+  <img src="/media/cunzac/bioinformatica/users/mbarrios/proyectos/calmecac/ostua2025/camaras/input/semana30/camera09/IMG_0001.JPG" loading="lazy" alt="IMG_0001.JPG">
+  <div class="caption">IMG_0001.JPG</div>
+</a>
+<a class="card" href="/media/cunzac/bioinformatica/users/mbarrios/proyectos/calmecac/ostua2025/camaras/input/semana30/camera09/IMG_0002.JPG" data-lightbox data-caption="IMG_0002.JPG">
+  <img src="/media/cunzac/bioinformatica/users/mbarrios/proyectos/calmecac/ostua2025/camaras/input/semana30/camera09/IMG_0002.JPG" loading="lazy" alt="IMG_0002.JPG">
+  <div class="caption">IMG_0002.JPG</div>
+</a>
+<a class="card" href="/media/cunzac/bioinformatica/users/mbarrios/proyectos/calmecac/ostua2025/camaras/input/semana30/camera09/IMG_0039.JPG" data-lightbox data-caption="IMG_0039.JPG">
+  <img src="/media/cunzac/bioinformatica/users/mbarrios/proyectos/calmecac/ostua2025/camaras/input/semana30/camera09/IMG_0039.JPG" loading="lazy" alt="IMG_0039.JPG">
+  <div class="caption">IMG_0039.JPG</div>
+</a>
+<a class="card" href="/media/cunzac/bioinformatica/users/mbarrios/proyectos/calmecac/ostua2025/camaras/input/semana30/camera09/IMG_0040.JPG" data-lightbox data-caption="IMG_0040.JPG">
+  <img src="/media/cunzac/bioinformatica/users/mbarrios/proyectos/calmecac/ostua2025/camaras/input/semana30/camera09/IMG_0040.JPG" loading="lazy" alt="IMG_0040.JPG">
+  <div class="caption">IMG_0040.JPG</div>
+</a>
+<a class="card" href="/media/cunzac/bioinformatica/users/mbarrios/proyectos/calmecac/ostua2025/camaras/input/semana30/camera09/IMG_0061.JPG" data-lightbox data-caption="IMG_0061.JPG">
+  <img src="/media/cunzac/bioinformatica/users/mbarrios/proyectos/calmecac/ostua2025/camaras/input/semana30/camera09/IMG_0061.JPG" loading="lazy" alt="IMG_0061.JPG">
+  <div class="caption">IMG_0061.JPG</div>
+</a>
+<a class="card" href="/media/cunzac/bioinformatica/users/mbarrios/proyectos/calmecac/ostua2025/camaras/input/semana30/camera09/IMG_0062.JPG" data-lightbox data-caption="IMG_0062.JPG">
+  <img src="/media/cunzac/bioinformatica/users/mbarrios/proyectos/calmecac/ostua2025/camaras/input/semana30/camera09/IMG_0062.JPG" loading="lazy" alt="IMG_0062.JPG">
+  <div class="caption">IMG_0062.JPG</div>
+</a>
+<a class="card" href="/media/cunzac/bioinformatica/users/mbarrios/proyectos/calmecac/ostua2025/camaras/input/semana30/camera09/IMG_0077.JPG" data-lightbox data-caption="IMG_0077.JPG">
+  <img src="/media/cunzac/bioinformatica/users/mbarrios/proyectos/calmecac/ostua2025/camaras/input/semana30/camera09/IMG_0077.JPG" loading="lazy" alt="IMG_0077.JPG">
+  <div class="caption">IMG_0077.JPG</div>
+</a>
+<a class="card" href="/media/cunzac/bioinformatica/users/mbarrios/proyectos/calmecac/ostua2025/camaras/input/semana30/camera09/IMG_0078.JPG" data-lightbox data-caption="IMG_0078.JPG">
+  <img src="/media/cunzac/bioinformatica/users/mbarrios/proyectos/calmecac/ostua2025/camaras/input/semana30/camera09/IMG_0078.JPG" loading="lazy" alt="IMG_0078.JPG">
+  <div class="caption">IMG_0078.JPG</div>
+</a>
+<a class="card" href="/media/cunzac/bioinformatica/users/mbarrios/proyectos/calmecac/ostua2025/camaras/input/semana30/camera09/IMG_0093.JPG" data-lightbox data-caption="IMG_0093.JPG">
+  <img src="/media/cunzac/bioinformatica/users/mbarrios/proyectos/calmecac/ostua2025/camaras/input/semana30/camera09/IMG_0093.JPG" loading="lazy" alt="IMG_0093.JPG">
+  <div class="caption">IMG_0093.JPG</div>
+</a>
+<a class="card" href="/media/cunzac/bioinformatica/users/mbarrios/proyectos/calmecac/ostua2025/camaras/input/semana31/camera04/IMG_0028.JPG" data-lightbox data-caption="IMG_0028.JPG">
+  <img src="/media/cunzac/bioinformatica/users/mbarrios/proyectos/calmecac/ostua2025/camaras/input/semana31/camera04/IMG_0028.JPG" loading="lazy" alt="IMG_0028.JPG">
+  <div class="caption">IMG_0028.JPG</div>
+</a>
+<a class="card" href="/media/cunzac/bioinformatica/users/mbarrios/proyectos/calmecac/ostua2025/camaras/input/semana31/camera11/IMG_0076.JPG" data-lightbox data-caption="IMG_0076.JPG">
+  <img src="/media/cunzac/bioinformatica/users/mbarrios/proyectos/calmecac/ostua2025/camaras/input/semana31/camera11/IMG_0076.JPG" loading="lazy" alt="IMG_0076.JPG">
+  <div class="caption">IMG_0076.JPG</div>
+</a>
+<a class="card" href="/media/cunzac/bioinformatica/users/mbarrios/proyectos/calmecac/ostua2025/camaras/input/semana31/camera11/IMG_0077.JPG" data-lightbox data-caption="IMG_0077.JPG">
+  <img src="/media/cunzac/bioinformatica/users/mbarrios/proyectos/calmecac/ostua2025/camaras/input/semana31/camera11/IMG_0077.JPG" loading="lazy" alt="IMG_0077.JPG">
+  <div class="caption">IMG_0077.JPG</div>
+</a>
+<a class="card" href="/media/cunzac/bioinformatica/users/mbarrios/proyectos/calmecac/ostua2025/camaras/input/semana31/camera14/IMG_0006.JPG" data-lightbox data-caption="IMG_0006.JPG">
+  <img src="/media/cunzac/bioinformatica/users/mbarrios/proyectos/calmecac/ostua2025/camaras/input/semana31/camera14/IMG_0006.JPG" loading="lazy" alt="IMG_0006.JPG">
+  <div class="caption">IMG_0006.JPG</div>
+</a>
+<a class="card" href="/media/cunzac/bioinformatica/users/mbarrios/proyectos/calmecac/ostua2025/camaras/input/semana31/camera14/IMG_0007.JPG" data-lightbox data-caption="IMG_0007.JPG">
+  <img src="/media/cunzac/bioinformatica/users/mbarrios/proyectos/calmecac/ostua2025/camaras/input/semana31/camera14/IMG_0007.JPG" loading="lazy" alt="IMG_0007.JPG">
+  <div class="caption">IMG_0007.JPG</div>
+</a>
+<a class="card" href="/media/cunzac/bioinformatica/users/mbarrios/proyectos/calmecac/ostua2025/camaras/input/semana31/camera14/IMG_0012.JPG" data-lightbox data-caption="IMG_0012.JPG">
+  <img src="/media/cunzac/bioinformatica/users/mbarrios/proyectos/calmecac/ostua2025/camaras/input/semana31/camera14/IMG_0012.JPG" loading="lazy" alt="IMG_0012.JPG">
+  <div class="caption">IMG_0012.JPG</div>
+</a>
+<a class="card" href="/media/cunzac/bioinformatica/users/mbarrios/proyectos/calmecac/ostua2025/camaras/input/semana31/camera14/IMG_0015.JPG" data-lightbox data-caption="IMG_0015.JPG">
+  <img src="/media/cunzac/bioinformatica/users/mbarrios/proyectos/calmecac/ostua2025/camaras/input/semana31/camera14/IMG_0015.JPG" loading="lazy" alt="IMG_0015.JPG">
+  <div class="caption">IMG_0015.JPG</div>
+</a>
+<a class="card" href="/media/cunzac/bioinformatica/users/mbarrios/proyectos/calmecac/ostua2025/camaras/input/semana31/camera14/IMG_0021.JPG" data-lightbox data-caption="IMG_0021.JPG">
+  <img src="/media/cunzac/bioinformatica/users/mbarrios/proyectos/calmecac/ostua2025/camaras/input/semana31/camera14/IMG_0021.JPG" loading="lazy" alt="IMG_0021.JPG">
+  <div class="caption">IMG_0021.JPG</div>
+</a>
+<a class="card" href="/media/cunzac/bioinformatica/users/mbarrios/proyectos/calmecac/ostua2025/camaras/input/semana32/camera04/IMG_0005.JPG" data-lightbox data-caption="IMG_0005.JPG">
+  <img src="/media/cunzac/bioinformatica/users/mbarrios/proyectos/calmecac/ostua2025/camaras/input/semana32/camera04/IMG_0005.JPG" loading="lazy" alt="IMG_0005.JPG">
+  <div class="caption">IMG_0005.JPG</div>
+</a>
+<a class="card" href="/media/cunzac/bioinformatica/users/mbarrios/proyectos/calmecac/ostua2025/camaras/input/semana32/camera05/IMG_0011.JPG" data-lightbox data-caption="IMG_0011.JPG">
+  <img src="/media/cunzac/bioinformatica/users/mbarrios/proyectos/calmecac/ostua2025/camaras/input/semana32/camera05/IMG_0011.JPG" loading="lazy" alt="IMG_0011.JPG">
+  <div class="caption">IMG_0011.JPG</div>
+</a>
+<a class="card" href="/media/cunzac/bioinformatica/users/mbarrios/proyectos/calmecac/ostua2025/camaras/input/semana32/camera05/IMG_0012.JPG" data-lightbox data-caption="IMG_0012.JPG">
+  <img src="/media/cunzac/bioinformatica/users/mbarrios/proyectos/calmecac/ostua2025/camaras/input/semana32/camera05/IMG_0012.JPG" loading="lazy" alt="IMG_0012.JPG">
+  <div class="caption">IMG_0012.JPG</div>
+</a>
+<a class="card" href="/media/cunzac/bioinformatica/users/mbarrios/proyectos/calmecac/ostua2025/camaras/input/semana32/camera14/IMG_0009.JPG" data-lightbox data-caption="IMG_0009.JPG">
+  <img src="/media/cunzac/bioinformatica/users/mbarrios/proyectos/calmecac/ostua2025/camaras/input/semana32/camera14/IMG_0009.JPG" loading="lazy" alt="IMG_0009.JPG">
+  <div class="caption">IMG_0009.JPG</div>
+</a>
+<a class="card" href="/media/cunzac/bioinformatica/users/mbarrios/proyectos/calmecac/ostua2025/camaras/input/semana32/camera14/IMG_0012.JPG" data-lightbox data-caption="IMG_0012.JPG">
+  <img src="/media/cunzac/bioinformatica/users/mbarrios/proyectos/calmecac/ostua2025/camaras/input/semana32/camera14/IMG_0012.JPG" loading="lazy" alt="IMG_0012.JPG">
+  <div class="caption">IMG_0012.JPG</div>
+</a>
+<a class="card" href="/media/cunzac/bioinformatica/users/mbarrios/proyectos/calmecac/ostua2025/camaras/input/semana32/camera14/IMG_0013.JPG" data-lightbox data-caption="IMG_0013.JPG">
+  <img src="/media/cunzac/bioinformatica/users/mbarrios/proyectos/calmecac/ostua2025/camaras/input/semana32/camera14/IMG_0013.JPG" loading="lazy" alt="IMG_0013.JPG">
+  <div class="caption">IMG_0013.JPG</div>
+</a>
+<a class="card" href="/media/cunzac/bioinformatica/users/mbarrios/proyectos/calmecac/ostua2025/camaras/input/semana32/camera14/IMG_0014.JPG" data-lightbox data-caption="IMG_0014.JPG">
+  <img src="/media/cunzac/bioinformatica/users/mbarrios/proyectos/calmecac/ostua2025/camaras/input/semana32/camera14/IMG_0014.JPG" loading="lazy" alt="IMG_0014.JPG">
+  <div class="caption">IMG_0014.JPG</div>
+</a>
+<a class="card" href="/media/cunzac/bioinformatica/users/mbarrios/proyectos/calmecac/ostua2025/camaras/input/semana32/camera14/IMG_0030.JPG" data-lightbox data-caption="IMG_0030.JPG">
+  <img src="/media/cunzac/bioinformatica/users/mbarrios/proyectos/calmecac/ostua2025/camaras/input/semana32/camera14/IMG_0030.JPG" loading="lazy" alt="IMG_0030.JPG">
+  <div class="caption">IMG_0030.JPG</div>
+</a>
+<a class="card" href="/media/cunzac/bioinformatica/users/mbarrios/proyectos/calmecac/ostua2025/camaras/input/semana32/camera14/IMG_0039.JPG" data-lightbox data-caption="IMG_0039.JPG">
+  <img src="/media/cunzac/bioinformatica/users/mbarrios/proyectos/calmecac/ostua2025/camaras/input/semana32/camera14/IMG_0039.JPG" loading="lazy" alt="IMG_0039.JPG">
+  <div class="caption">IMG_0039.JPG</div>
+</a>
+<a class="card" href="/media/cunzac/bioinformatica/users/mbarrios/proyectos/calmecac/ostua2025/camaras/input/semana32/camera14/IMG_0040.JPG" data-lightbox data-caption="IMG_0040.JPG">
+  <img src="/media/cunzac/bioinformatica/users/mbarrios/proyectos/calmecac/ostua2025/camaras/input/semana32/camera14/IMG_0040.JPG" loading="lazy" alt="IMG_0040.JPG">
+  <div class="caption">IMG_0040.JPG</div>
+</a>
+<a class="card" href="/media/cunzac/bioinformatica/users/mbarrios/proyectos/calmecac/ostua2025/camaras/input/semana32/camera14/IMG_0045.JPG" data-lightbox data-caption="IMG_0045.JPG">
+  <img src="/media/cunzac/bioinformatica/users/mbarrios/proyectos/calmecac/ostua2025/camaras/input/semana32/camera14/IMG_0045.JPG" loading="lazy" alt="IMG_0045.JPG">
+  <div class="caption">IMG_0045.JPG</div>
+</a>
+<a class="card" href="/media/cunzac/bioinformatica/users/mbarrios/proyectos/calmecac/ostua2025/camaras/input/semana32/camera14/IMG_0046.JPG" data-lightbox data-caption="IMG_0046.JPG">
+  <img src="/media/cunzac/bioinformatica/users/mbarrios/proyectos/calmecac/ostua2025/camaras/input/semana32/camera14/IMG_0046.JPG" loading="lazy" alt="IMG_0046.JPG">
+  <div class="caption">IMG_0046.JPG</div>
+</a>
+<a class="card" href="/media/cunzac/bioinformatica/users/mbarrios/proyectos/calmecac/ostua2025/camaras/input/semana32/camera14/IMG_0047.JPG" data-lightbox data-caption="IMG_0047.JPG">
+  <img src="/media/cunzac/bioinformatica/users/mbarrios/proyectos/calmecac/ostua2025/camaras/input/semana32/camera14/IMG_0047.JPG" loading="lazy" alt="IMG_0047.JPG">
+  <div class="caption">IMG_0047.JPG</div>
+</a>
+<a class="card" href="/media/cunzac/bioinformatica/users/mbarrios/proyectos/calmecac/ostua2025/camaras/input/semana32/camera14/IMG_0048.JPG" data-lightbox data-caption="IMG_0048.JPG">
+  <img src="/media/cunzac/bioinformatica/users/mbarrios/proyectos/calmecac/ostua2025/camaras/input/semana32/camera14/IMG_0048.JPG" loading="lazy" alt="IMG_0048.JPG">
+  <div class="caption">IMG_0048.JPG</div>
+</a>
+<a class="card" href="/media/cunzac/bioinformatica/users/mbarrios/proyectos/calmecac/ostua2025/camaras/input/semana32/camera14/IMG_0049.JPG" data-lightbox data-caption="IMG_0049.JPG">
+  <img src="/media/cunzac/bioinformatica/users/mbarrios/proyectos/calmecac/ostua2025/camaras/input/semana32/camera14/IMG_0049.JPG" loading="lazy" alt="IMG_0049.JPG">
+  <div class="caption">IMG_0049.JPG</div>
+</a>
+<a class="card" href="/media/cunzac/bioinformatica/users/mbarrios/proyectos/calmecac/ostua2025/camaras/input/semana32/camera14/IMG_0050.JPG" data-lightbox data-caption="IMG_0050.JPG">
+  <img src="/media/cunzac/bioinformatica/users/mbarrios/proyectos/calmecac/ostua2025/camaras/input/semana32/camera14/IMG_0050.JPG" loading="lazy" alt="IMG_0050.JPG">
+  <div class="caption">IMG_0050.JPG</div>
+</a>
+<a class="card" href="/media/cunzac/bioinformatica/users/mbarrios/proyectos/calmecac/ostua2025/camaras/input/semana32/camera14/IMG_0051.JPG" data-lightbox data-caption="IMG_0051.JPG">
+  <img src="/media/cunzac/bioinformatica/users/mbarrios/proyectos/calmecac/ostua2025/camaras/input/semana32/camera14/IMG_0051.JPG" loading="lazy" alt="IMG_0051.JPG">
+  <div class="caption">IMG_0051.JPG</div>
+</a>
+<a class="card" href="/media/cunzac/bioinformatica/users/mbarrios/proyectos/calmecac/ostua2025/camaras/input/semana32/camera14/IMG_0052.JPG" data-lightbox data-caption="IMG_0052.JPG">
+  <img src="/media/cunzac/bioinformatica/users/mbarrios/proyectos/calmecac/ostua2025/camaras/input/semana32/camera14/IMG_0052.JPG" loading="lazy" alt="IMG_0052.JPG">
+  <div class="caption">IMG_0052.JPG</div>
+</a>
+<a class="card" href="/media/cunzac/bioinformatica/users/mbarrios/proyectos/calmecac/ostua2025/camaras/input/semana32/camera14/IMG_0053.JPG" data-lightbox data-caption="IMG_0053.JPG">
+  <img src="/media/cunzac/bioinformatica/users/mbarrios/proyectos/calmecac/ostua2025/camaras/input/semana32/camera14/IMG_0053.JPG" loading="lazy" alt="IMG_0053.JPG">
+  <div class="caption">IMG_0053.JPG</div>
+</a>
+<a class="card" href="/media/cunzac/bioinformatica/users/mbarrios/proyectos/calmecac/ostua2025/camaras/input/semana32/camera14/IMG_0054.JPG" data-lightbox data-caption="IMG_0054.JPG">
+  <img src="/media/cunzac/bioinformatica/users/mbarrios/proyectos/calmecac/ostua2025/camaras/input/semana32/camera14/IMG_0054.JPG" loading="lazy" alt="IMG_0054.JPG">
+  <div class="caption">IMG_0054.JPG</div>
+</a>
+<a class="card" href="/media/cunzac/bioinformatica/users/mbarrios/proyectos/calmecac/ostua2025/camaras/input/semana32/camera14/IMG_0055.JPG" data-lightbox data-caption="IMG_0055.JPG">
+  <img src="/media/cunzac/bioinformatica/users/mbarrios/proyectos/calmecac/ostua2025/camaras/input/semana32/camera14/IMG_0055.JPG" loading="lazy" alt="IMG_0055.JPG">
+  <div class="caption">IMG_0055.JPG</div>
+</a>
+<a class="card" href="/media/cunzac/bioinformatica/users/mbarrios/proyectos/calmecac/ostua2025/camaras/input/semana32/camera14/IMG_0056.JPG" data-lightbox data-caption="IMG_0056.JPG">
+  <img src="/media/cunzac/bioinformatica/users/mbarrios/proyectos/calmecac/ostua2025/camaras/input/semana32/camera14/IMG_0056.JPG" loading="lazy" alt="IMG_0056.JPG">
+  <div class="caption">IMG_0056.JPG</div>
+</a>
+<a class="card" href="/media/cunzac/bioinformatica/users/mbarrios/proyectos/calmecac/ostua2025/camaras/input/semana32/camera14/IMG_0057.JPG" data-lightbox data-caption="IMG_0057.JPG">
+  <img src="/media/cunzac/bioinformatica/users/mbarrios/proyectos/calmecac/ostua2025/camaras/input/semana32/camera14/IMG_0057.JPG" loading="lazy" alt="IMG_0057.JPG">
+  <div class="caption">IMG_0057.JPG</div>
+</a>
+<a class="card" href="/media/cunzac/bioinformatica/users/mbarrios/proyectos/calmecac/ostua2025/camaras/input/semana32/camera14/IMG_0058.JPG" data-lightbox data-caption="IMG_0058.JPG">
+  <img src="/media/cunzac/bioinformatica/users/mbarrios/proyectos/calmecac/ostua2025/camaras/input/semana32/camera14/IMG_0058.JPG" loading="lazy" alt="IMG_0058.JPG">
+  <div class="caption">IMG_0058.JPG</div>
+</a>
+<a class="card" href="/media/cunzac/bioinformatica/users/mbarrios/proyectos/calmecac/ostua2025/camaras/input/semana32/camera14/IMG_0059.JPG" data-lightbox data-caption="IMG_0059.JPG">
+  <img src="/media/cunzac/bioinformatica/users/mbarrios/proyectos/calmecac/ostua2025/camaras/input/semana32/camera14/IMG_0059.JPG" loading="lazy" alt="IMG_0059.JPG">
+  <div class="caption">IMG_0059.JPG</div>
+</a>
+<a class="card" href="/media/cunzac/bioinformatica/users/mbarrios/proyectos/calmecac/ostua2025/camaras/input/semana32/camera15/IMG_0041.JPG" data-lightbox data-caption="IMG_0041.JPG">
+  <img src="/media/cunzac/bioinformatica/users/mbarrios/proyectos/calmecac/ostua2025/camaras/input/semana32/camera15/IMG_0041.JPG" loading="lazy" alt="IMG_0041.JPG">
+  <div class="caption">IMG_0041.JPG</div>
+</a>
+<a class="card" href="/media/cunzac/bioinformatica/users/mbarrios/proyectos/calmecac/ostua2025/camaras/input/semana33/camera04/IMG_0009.JPG" data-lightbox data-caption="IMG_0009.JPG">
+  <img src="/media/cunzac/bioinformatica/users/mbarrios/proyectos/calmecac/ostua2025/camaras/input/semana33/camera04/IMG_0009.JPG" loading="lazy" alt="IMG_0009.JPG">
+  <div class="caption">IMG_0009.JPG</div>
+</a>
+<a class="card" href="/media/cunzac/bioinformatica/users/mbarrios/proyectos/calmecac/ostua2025/camaras/input/semana33/camera04/IMG_0010.JPG" data-lightbox data-caption="IMG_0010.JPG">
+  <img src="/media/cunzac/bioinformatica/users/mbarrios/proyectos/calmecac/ostua2025/camaras/input/semana33/camera04/IMG_0010.JPG" loading="lazy" alt="IMG_0010.JPG">
+  <div class="caption">IMG_0010.JPG</div>
+</a>
+<a class="card" href="/media/cunzac/bioinformatica/users/mbarrios/proyectos/calmecac/ostua2025/camaras/input/semana33/camera05/IMG_0005.JPG" data-lightbox data-caption="IMG_0005.JPG">
+  <img src="/media/cunzac/bioinformatica/users/mbarrios/proyectos/calmecac/ostua2025/camaras/input/semana33/camera05/IMG_0005.JPG" loading="lazy" alt="IMG_0005.JPG">
+  <div class="caption">IMG_0005.JPG</div>
+</a>
+<a class="card" href="/media/cunzac/bioinformatica/users/mbarrios/proyectos/calmecac/ostua2025/camaras/input/semana33/camera05/IMG_0006.JPG" data-lightbox data-caption="IMG_0006.JPG">
+  <img src="/media/cunzac/bioinformatica/users/mbarrios/proyectos/calmecac/ostua2025/camaras/input/semana33/camera05/IMG_0006.JPG" loading="lazy" alt="IMG_0006.JPG">
+  <div class="caption">IMG_0006.JPG</div>
+</a>
+<a class="card" href="/media/cunzac/bioinformatica/users/mbarrios/proyectos/calmecac/ostua2025/camaras/input/semana33/camera14/IMG_0001.JPG" data-lightbox data-caption="IMG_0001.JPG">
+  <img src="/media/cunzac/bioinformatica/users/mbarrios/proyectos/calmecac/ostua2025/camaras/input/semana33/camera14/IMG_0001.JPG" loading="lazy" alt="IMG_0001.JPG">
+  <div class="caption">IMG_0001.JPG</div>
+</a>
+<a class="card" href="/media/cunzac/bioinformatica/users/mbarrios/proyectos/calmecac/ostua2025/camaras/input/semana33/camera14/IMG_0002.JPG" data-lightbox data-caption="IMG_0002.JPG">
+  <img src="/media/cunzac/bioinformatica/users/mbarrios/proyectos/calmecac/ostua2025/camaras/input/semana33/camera14/IMG_0002.JPG" loading="lazy" alt="IMG_0002.JPG">
+  <div class="caption">IMG_0002.JPG</div>
+</a>
+<a class="card" href="/media/cunzac/bioinformatica/users/mbarrios/proyectos/calmecac/ostua2025/camaras/input/semana33/camera14/IMG_0003.JPG" data-lightbox data-caption="IMG_0003.JPG">
+  <img src="/media/cunzac/bioinformatica/users/mbarrios/proyectos/calmecac/ostua2025/camaras/input/semana33/camera14/IMG_0003.JPG" loading="lazy" alt="IMG_0003.JPG">
+  <div class="caption">IMG_0003.JPG</div>
+</a>
+<a class="card" href="/media/cunzac/bioinformatica/users/mbarrios/proyectos/calmecac/ostua2025/camaras/input/semana33/camera14/IMG_0007.JPG" data-lightbox data-caption="IMG_0007.JPG">
+  <img src="/media/cunzac/bioinformatica/users/mbarrios/proyectos/calmecac/ostua2025/camaras/input/semana33/camera14/IMG_0007.JPG" loading="lazy" alt="IMG_0007.JPG">
+  <div class="caption">IMG_0007.JPG</div>
+</a>
+<a class="card" href="/media/cunzac/bioinformatica/users/mbarrios/proyectos/calmecac/ostua2025/camaras/input/semana33/camera14/IMG_0008.JPG" data-lightbox data-caption="IMG_0008.JPG">
+  <img src="/media/cunzac/bioinformatica/users/mbarrios/proyectos/calmecac/ostua2025/camaras/input/semana33/camera14/IMG_0008.JPG" loading="lazy" alt="IMG_0008.JPG">
+  <div class="caption">IMG_0008.JPG</div>
+</a>
+<a class="card" href="/media/cunzac/bioinformatica/users/mbarrios/proyectos/calmecac/ostua2025/camaras/input/semana33/camera14/IMG_0009.JPG" data-lightbox data-caption="IMG_0009.JPG">
+  <img src="/media/cunzac/bioinformatica/users/mbarrios/proyectos/calmecac/ostua2025/camaras/input/semana33/camera14/IMG_0009.JPG" loading="lazy" alt="IMG_0009.JPG">
+  <div class="caption">IMG_0009.JPG</div>
+</a>
+<a class="card" href="/media/cunzac/bioinformatica/users/mbarrios/proyectos/calmecac/ostua2025/camaras/input/semana33/camera14/IMG_0010.JPG" data-lightbox data-caption="IMG_0010.JPG">
+  <img src="/media/cunzac/bioinformatica/users/mbarrios/proyectos/calmecac/ostua2025/camaras/input/semana33/camera14/IMG_0010.JPG" loading="lazy" alt="IMG_0010.JPG">
+  <div class="caption">IMG_0010.JPG</div>
+</a>
+<a class="card" href="/media/cunzac/bioinformatica/users/mbarrios/proyectos/calmecac/ostua2025/camaras/input/semana33/camera14/IMG_0011.JPG" data-lightbox data-caption="IMG_0011.JPG">
+  <img src="/media/cunzac/bioinformatica/users/mbarrios/proyectos/calmecac/ostua2025/camaras/input/semana33/camera14/IMG_0011.JPG" loading="lazy" alt="IMG_0011.JPG">
+  <div class="caption">IMG_0011.JPG</div>
+</a>
+<a class="card" href="/media/cunzac/bioinformatica/users/mbarrios/proyectos/calmecac/ostua2025/camaras/input/semana33/camera14/IMG_0012.JPG" data-lightbox data-caption="IMG_0012.JPG">
+  <img src="/media/cunzac/bioinformatica/users/mbarrios/proyectos/calmecac/ostua2025/camaras/input/semana33/camera14/IMG_0012.JPG" loading="lazy" alt="IMG_0012.JPG">
+  <div class="caption">IMG_0012.JPG</div>
+</a>
+<a class="card" href="/media/cunzac/bioinformatica/users/mbarrios/proyectos/calmecac/ostua2025/camaras/input/semana33/camera14/IMG_0013.JPG" data-lightbox data-caption="IMG_0013.JPG">
+  <img src="/media/cunzac/bioinformatica/users/mbarrios/proyectos/calmecac/ostua2025/camaras/input/semana33/camera14/IMG_0013.JPG" loading="lazy" alt="IMG_0013.JPG">
+  <div class="caption">IMG_0013.JPG</div>
+</a>
+<a class="card" href="/media/cunzac/bioinformatica/users/mbarrios/proyectos/calmecac/ostua2025/camaras/input/semana33/camera14/IMG_0015.JPG" data-lightbox data-caption="IMG_0015.JPG">
+  <img src="/media/cunzac/bioinformatica/users/mbarrios/proyectos/calmecac/ostua2025/camaras/input/semana33/camera14/IMG_0015.JPG" loading="lazy" alt="IMG_0015.JPG">
+  <div class="caption">IMG_0015.JPG</div>
+</a>
+<a class="card" href="/media/cunzac/bioinformatica/users/mbarrios/proyectos/calmecac/ostua2025/camaras/input/semana33/camera14/IMG_0016.JPG" data-lightbox data-caption="IMG_0016.JPG">
+  <img src="/media/cunzac/bioinformatica/users/mbarrios/proyectos/calmecac/ostua2025/camaras/input/semana33/camera14/IMG_0016.JPG" loading="lazy" alt="IMG_0016.JPG">
+  <div class="caption">IMG_0016.JPG</div>
+</a>
+<a class="card" href="/media/cunzac/bioinformatica/users/mbarrios/proyectos/calmecac/ostua2025/camaras/input/semana33/camera14/IMG_0019.JPG" data-lightbox data-caption="IMG_0019.JPG">
+  <img src="/media/cunzac/bioinformatica/users/mbarrios/proyectos/calmecac/ostua2025/camaras/input/semana33/camera14/IMG_0019.JPG" loading="lazy" alt="IMG_0019.JPG">
+  <div class="caption">IMG_0019.JPG</div>
+</a>
+<a class="card" href="/media/cunzac/bioinformatica/users/mbarrios/proyectos/calmecac/ostua2025/camaras/input/semana33/camera14/IMG_0022.JPG" data-lightbox data-caption="IMG_0022.JPG">
+  <img src="/media/cunzac/bioinformatica/users/mbarrios/proyectos/calmecac/ostua2025/camaras/input/semana33/camera14/IMG_0022.JPG" loading="lazy" alt="IMG_0022.JPG">
+  <div class="caption">IMG_0022.JPG</div>
+</a>
+<a class="card" href="/media/cunzac/bioinformatica/users/mbarrios/proyectos/calmecac/ostua2025/camaras/input/semana33/camera14/IMG_0023.JPG" data-lightbox data-caption="IMG_0023.JPG">
+  <img src="/media/cunzac/bioinformatica/users/mbarrios/proyectos/calmecac/ostua2025/camaras/input/semana33/camera14/IMG_0023.JPG" loading="lazy" alt="IMG_0023.JPG">
+  <div class="caption">IMG_0023.JPG</div>
+</a>
+<a class="card" href="/media/cunzac/bioinformatica/users/mbarrios/proyectos/calmecac/ostua2025/camaras/input/semana33/camera14/IMG_0024.JPG" data-lightbox data-caption="IMG_0024.JPG">
+  <img src="/media/cunzac/bioinformatica/users/mbarrios/proyectos/calmecac/ostua2025/camaras/input/semana33/camera14/IMG_0024.JPG" loading="lazy" alt="IMG_0024.JPG">
+  <div class="caption">IMG_0024.JPG</div>
+</a>
+<a class="card" href="/media/cunzac/bioinformatica/users/mbarrios/proyectos/calmecac/ostua2025/camaras/input/semana33/camera14/IMG_0025.JPG" data-lightbox data-caption="IMG_0025.JPG">
+  <img src="/media/cunzac/bioinformatica/users/mbarrios/proyectos/calmecac/ostua2025/camaras/input/semana33/camera14/IMG_0025.JPG" loading="lazy" alt="IMG_0025.JPG">
+  <div class="caption">IMG_0025.JPG</div>
+</a>
+<a class="card" href="/media/cunzac/bioinformatica/users/mbarrios/proyectos/calmecac/ostua2025/camaras/input/semana33/camera14/IMG_0026.JPG" data-lightbox data-caption="IMG_0026.JPG">
+  <img src="/media/cunzac/bioinformatica/users/mbarrios/proyectos/calmecac/ostua2025/camaras/input/semana33/camera14/IMG_0026.JPG" loading="lazy" alt="IMG_0026.JPG">
+  <div class="caption">IMG_0026.JPG</div>
+</a>
+<a class="card" href="/media/cunzac/bioinformatica/users/mbarrios/proyectos/calmecac/ostua2025/camaras/input/semana33/camera14/IMG_0027.JPG" data-lightbox data-caption="IMG_0027.JPG">
+  <img src="/media/cunzac/bioinformatica/users/mbarrios/proyectos/calmecac/ostua2025/camaras/input/semana33/camera14/IMG_0027.JPG" loading="lazy" alt="IMG_0027.JPG">
+  <div class="caption">IMG_0027.JPG</div>
+</a>
+<a class="card" href="/media/cunzac/bioinformatica/users/mbarrios/proyectos/calmecac/ostua2025/camaras/input/semana33/camera14/IMG_0028.JPG" data-lightbox data-caption="IMG_0028.JPG">
+  <img src="/media/cunzac/bioinformatica/users/mbarrios/proyectos/calmecac/ostua2025/camaras/input/semana33/camera14/IMG_0028.JPG" loading="lazy" alt="IMG_0028.JPG">
+  <div class="caption">IMG_0028.JPG</div>
+</a>
+<a class="card" href="/media/cunzac/bioinformatica/users/mbarrios/proyectos/calmecac/ostua2025/camaras/input/semana33/camera14/IMG_0029.JPG" data-lightbox data-caption="IMG_0029.JPG">
+  <img src="/media/cunzac/bioinformatica/users/mbarrios/proyectos/calmecac/ostua2025/camaras/input/semana33/camera14/IMG_0029.JPG" loading="lazy" alt="IMG_0029.JPG">
+  <div class="caption">IMG_0029.JPG</div>
+</a>
+<a class="card" href="/media/cunzac/bioinformatica/users/mbarrios/proyectos/calmecac/ostua2025/camaras/input/semana33/camera14/IMG_0030.JPG" data-lightbox data-caption="IMG_0030.JPG">
+  <img src="/media/cunzac/bioinformatica/users/mbarrios/proyectos/calmecac/ostua2025/camaras/input/semana33/camera14/IMG_0030.JPG" loading="lazy" alt="IMG_0030.JPG">
+  <div class="caption">IMG_0030.JPG</div>
+</a>
+<a class="card" href="/media/cunzac/bioinformatica/users/mbarrios/proyectos/calmecac/ostua2025/camaras/input/semana33/camera14/IMG_0031.JPG" data-lightbox data-caption="IMG_0031.JPG">
+  <img src="/media/cunzac/bioinformatica/users/mbarrios/proyectos/calmecac/ostua2025/camaras/input/semana33/camera14/IMG_0031.JPG" loading="lazy" alt="IMG_0031.JPG">
+  <div class="caption">IMG_0031.JPG</div>
+</a>
+<a class="card" href="/media/cunzac/bioinformatica/users/mbarrios/proyectos/calmecac/ostua2025/camaras/input/semana33/camera14/IMG_0032.JPG" data-lightbox data-caption="IMG_0032.JPG">
+  <img src="/media/cunzac/bioinformatica/users/mbarrios/proyectos/calmecac/ostua2025/camaras/input/semana33/camera14/IMG_0032.JPG" loading="lazy" alt="IMG_0032.JPG">
+  <div class="caption">IMG_0032.JPG</div>
+</a>
+<a class="card" href="/media/cunzac/bioinformatica/users/mbarrios/proyectos/calmecac/ostua2025/camaras/input/semana33/camera14/IMG_0034.JPG" data-lightbox data-caption="IMG_0034.JPG">
+  <img src="/media/cunzac/bioinformatica/users/mbarrios/proyectos/calmecac/ostua2025/camaras/input/semana33/camera14/IMG_0034.JPG" loading="lazy" alt="IMG_0034.JPG">
+  <div class="caption">IMG_0034.JPG</div>
+</a>
+<a class="card" href="/media/cunzac/bioinformatica/users/mbarrios/proyectos/calmecac/ostua2025/camaras/input/semana33/camera14/IMG_0035.JPG" data-lightbox data-caption="IMG_0035.JPG">
+  <img src="/media/cunzac/bioinformatica/users/mbarrios/proyectos/calmecac/ostua2025/camaras/input/semana33/camera14/IMG_0035.JPG" loading="lazy" alt="IMG_0035.JPG">
+  <div class="caption">IMG_0035.JPG</div>
+</a>
+<a class="card" href="/media/cunzac/bioinformatica/users/mbarrios/proyectos/calmecac/ostua2025/camaras/input/semana33/camera14/IMG_0036.JPG" data-lightbox data-caption="IMG_0036.JPG">
+  <img src="/media/cunzac/bioinformatica/users/mbarrios/proyectos/calmecac/ostua2025/camaras/input/semana33/camera14/IMG_0036.JPG" loading="lazy" alt="IMG_0036.JPG">
+  <div class="caption">IMG_0036.JPG</div>
+</a>
+<a class="card" href="/media/cunzac/bioinformatica/users/mbarrios/proyectos/calmecac/ostua2025/camaras/input/semana33/camera14/IMG_0037.JPG" data-lightbox data-caption="IMG_0037.JPG">
+  <img src="/media/cunzac/bioinformatica/users/mbarrios/proyectos/calmecac/ostua2025/camaras/input/semana33/camera14/IMG_0037.JPG" loading="lazy" alt="IMG_0037.JPG">
+  <div class="caption">IMG_0037.JPG</div>
+</a>
+<a class="card" href="/media/cunzac/bioinformatica/users/mbarrios/proyectos/calmecac/ostua2025/camaras/input/semana33/camera14/IMG_0038.JPG" data-lightbox data-caption="IMG_0038.JPG">
+  <img src="/media/cunzac/bioinformatica/users/mbarrios/proyectos/calmecac/ostua2025/camaras/input/semana33/camera14/IMG_0038.JPG" loading="lazy" alt="IMG_0038.JPG">
+  <div class="caption">IMG_0038.JPG</div>
+</a>
+<a class="card" href="/media/cunzac/bioinformatica/users/mbarrios/proyectos/calmecac/ostua2025/camaras/input/semana33/camera14/IMG_0039.JPG" data-lightbox data-caption="IMG_0039.JPG">
+  <img src="/media/cunzac/bioinformatica/users/mbarrios/proyectos/calmecac/ostua2025/camaras/input/semana33/camera14/IMG_0039.JPG" loading="lazy" alt="IMG_0039.JPG">
+  <div class="caption">IMG_0039.JPG</div>
+</a>
+<a class="card" href="/media/cunzac/bioinformatica/users/mbarrios/proyectos/calmecac/ostua2025/camaras/input/semana33/camera14/IMG_0052.JPG" data-lightbox data-caption="IMG_0052.JPG">
+  <img src="/media/cunzac/bioinformatica/users/mbarrios/proyectos/calmecac/ostua2025/camaras/input/semana33/camera14/IMG_0052.JPG" loading="lazy" alt="IMG_0052.JPG">
+  <div class="caption">IMG_0052.JPG</div>
+</a>
+<a class="card" href="/media/cunzac/bioinformatica/users/mbarrios/proyectos/calmecac/ostua2025/camaras/input/semana33/camera14/IMG_0055.JPG" data-lightbox data-caption="IMG_0055.JPG">
+  <img src="/media/cunzac/bioinformatica/users/mbarrios/proyectos/calmecac/ostua2025/camaras/input/semana33/camera14/IMG_0055.JPG" loading="lazy" alt="IMG_0055.JPG">
+  <div class="caption">IMG_0055.JPG</div>
+</a>
+<a class="card" href="/media/cunzac/bioinformatica/users/mbarrios/proyectos/calmecac/ostua2025/camaras/input/semana33/camera14/IMG_0064.JPG" data-lightbox data-caption="IMG_0064.JPG">
+  <img src="/media/cunzac/bioinformatica/users/mbarrios/proyectos/calmecac/ostua2025/camaras/input/semana33/camera14/IMG_0064.JPG" loading="lazy" alt="IMG_0064.JPG">
+  <div class="caption">IMG_0064.JPG</div>
+</a>
+<a class="card" href="/media/cunzac/bioinformatica/users/mbarrios/proyectos/calmecac/ostua2025/camaras/input/semana33/camera14/IMG_0065.JPG" data-lightbox data-caption="IMG_0065.JPG">
+  <img src="/media/cunzac/bioinformatica/users/mbarrios/proyectos/calmecac/ostua2025/camaras/input/semana33/camera14/IMG_0065.JPG" loading="lazy" alt="IMG_0065.JPG">
+  <div class="caption">IMG_0065.JPG</div>
+</a>
+<a class="card" href="/media/cunzac/bioinformatica/users/mbarrios/proyectos/calmecac/ostua2025/camaras/input/semana33/camera14/IMG_0066.JPG" data-lightbox data-caption="IMG_0066.JPG">
+  <img src="/media/cunzac/bioinformatica/users/mbarrios/proyectos/calmecac/ostua2025/camaras/input/semana33/camera14/IMG_0066.JPG" loading="lazy" alt="IMG_0066.JPG">
+  <div class="caption">IMG_0066.JPG</div>
+</a>
+<a class="card" href="/media/cunzac/bioinformatica/users/mbarrios/proyectos/calmecac/ostua2025/camaras/input/semana34/camera04/IMG_0001.JPG" data-lightbox data-caption="IMG_0001.JPG">
+  <img src="/media/cunzac/bioinformatica/users/mbarrios/proyectos/calmecac/ostua2025/camaras/input/semana34/camera04/IMG_0001.JPG" loading="lazy" alt="IMG_0001.JPG">
+  <div class="caption">IMG_0001.JPG</div>
+</a>
+<a class="card" href="/media/cunzac/bioinformatica/users/mbarrios/proyectos/calmecac/ostua2025/camaras/input/semana34/camera04/IMG_0002.JPG" data-lightbox data-caption="IMG_0002.JPG">
+  <img src="/media/cunzac/bioinformatica/users/mbarrios/proyectos/calmecac/ostua2025/camaras/input/semana34/camera04/IMG_0002.JPG" loading="lazy" alt="IMG_0002.JPG">
+  <div class="caption">IMG_0002.JPG</div>
+</a>
+<a class="card" href="/media/cunzac/bioinformatica/users/mbarrios/proyectos/calmecac/ostua2025/camaras/input/semana34/camera05/IMG_0007.JPG" data-lightbox data-caption="IMG_0007.JPG">
+  <img src="/media/cunzac/bioinformatica/users/mbarrios/proyectos/calmecac/ostua2025/camaras/input/semana34/camera05/IMG_0007.JPG" loading="lazy" alt="IMG_0007.JPG">
+  <div class="caption">IMG_0007.JPG</div>
+</a>
+<a class="card" href="/media/cunzac/bioinformatica/users/mbarrios/proyectos/calmecac/ostua2025/camaras/input/semana34/camera05/IMG_0008.JPG" data-lightbox data-caption="IMG_0008.JPG">
+  <img src="/media/cunzac/bioinformatica/users/mbarrios/proyectos/calmecac/ostua2025/camaras/input/semana34/camera05/IMG_0008.JPG" loading="lazy" alt="IMG_0008.JPG">
+  <div class="caption">IMG_0008.JPG</div>
+</a>
+<a class="card" href="/media/cunzac/bioinformatica/users/mbarrios/proyectos/calmecac/ostua2025/camaras/input/semana34/camera05/IMG_0009.JPG" data-lightbox data-caption="IMG_0009.JPG">
+  <img src="/media/cunzac/bioinformatica/users/mbarrios/proyectos/calmecac/ostua2025/camaras/input/semana34/camera05/IMG_0009.JPG" loading="lazy" alt="IMG_0009.JPG">
+  <div class="caption">IMG_0009.JPG</div>
+</a>
+<a class="card" href="/media/cunzac/bioinformatica/users/mbarrios/proyectos/calmecac/ostua2025/camaras/input/semana34/camera05/IMG_0010.JPG" data-lightbox data-caption="IMG_0010.JPG">
+  <img src="/media/cunzac/bioinformatica/users/mbarrios/proyectos/calmecac/ostua2025/camaras/input/semana34/camera05/IMG_0010.JPG" loading="lazy" alt="IMG_0010.JPG">
+  <div class="caption">IMG_0010.JPG</div>
+</a>
+<a class="card" href="/media/cunzac/bioinformatica/users/mbarrios/proyectos/calmecac/ostua2025/camaras/input/semana34/camera15/IMG_0007.JPG" data-lightbox data-caption="IMG_0007.JPG">
+  <img src="/media/cunzac/bioinformatica/users/mbarrios/proyectos/calmecac/ostua2025/camaras/input/semana34/camera15/IMG_0007.JPG" loading="lazy" alt="IMG_0007.JPG">
+  <div class="caption">IMG_0007.JPG</div>
+</a>
+<a class="card" href="/media/cunzac/bioinformatica/users/mbarrios/proyectos/calmecac/ostua2025/camaras/input/semana34/camera16/IMG_0040.JPG" data-lightbox data-caption="IMG_0040.JPG">
+  <img src="/media/cunzac/bioinformatica/users/mbarrios/proyectos/calmecac/ostua2025/camaras/input/semana34/camera16/IMG_0040.JPG" loading="lazy" alt="IMG_0040.JPG">
+  <div class="caption">IMG_0040.JPG</div>
+</a>
+<a class="card" href="/media/cunzac/bioinformatica/users/mbarrios/proyectos/calmecac/ostua2025/camaras/input/semana34/martin2/IMG_0005.JPG" data-lightbox data-caption="IMG_0005.JPG">
+  <img src="/media/cunzac/bioinformatica/users/mbarrios/proyectos/calmecac/ostua2025/camaras/input/semana34/martin2/IMG_0005.JPG" loading="lazy" alt="IMG_0005.JPG">
+  <div class="caption">IMG_0005.JPG</div>
+</a>
+<a class="card" href="/media/cunzac/bioinformatica/users/mbarrios/proyectos/calmecac/ostua2025/camaras/input/semana34/martin2/IMG_0006.JPG" data-lightbox data-caption="IMG_0006.JPG">
+  <img src="/media/cunzac/bioinformatica/users/mbarrios/proyectos/calmecac/ostua2025/camaras/input/semana34/martin2/IMG_0006.JPG" loading="lazy" alt="IMG_0006.JPG">
+  <div class="caption">IMG_0006.JPG</div>
+</a>
+<a class="card" href="/media/cunzac/bioinformatica/users/mbarrios/proyectos/calmecac/ostua2025/camaras/input/semana35/camera04/IMG_0007.JPG" data-lightbox data-caption="IMG_0007.JPG">
+  <img src="/media/cunzac/bioinformatica/users/mbarrios/proyectos/calmecac/ostua2025/camaras/input/semana35/camera04/IMG_0007.JPG" loading="lazy" alt="IMG_0007.JPG">
+  <div class="caption">IMG_0007.JPG</div>
+</a>
+<a class="card" href="/media/cunzac/bioinformatica/users/mbarrios/proyectos/calmecac/ostua2025/camaras/input/semana35/camera04/IMG_0008.JPG" data-lightbox data-caption="IMG_0008.JPG">
+  <img src="/media/cunzac/bioinformatica/users/mbarrios/proyectos/calmecac/ostua2025/camaras/input/semana35/camera04/IMG_0008.JPG" loading="lazy" alt="IMG_0008.JPG">
+  <div class="caption">IMG_0008.JPG</div>
+</a>
+<a class="card" href="/media/cunzac/bioinformatica/users/mbarrios/proyectos/calmecac/ostua2025/camaras/input/semana35/camera04/IMG_0011.JPG" data-lightbox data-caption="IMG_0011.JPG">
+  <img src="/media/cunzac/bioinformatica/users/mbarrios/proyectos/calmecac/ostua2025/camaras/input/semana35/camera04/IMG_0011.JPG" loading="lazy" alt="IMG_0011.JPG">
+  <div class="caption">IMG_0011.JPG</div>
+</a>
+<a class="card" href="/media/cunzac/bioinformatica/users/mbarrios/proyectos/calmecac/ostua2025/camaras/input/semana35/camera04/IMG_0012.JPG" data-lightbox data-caption="IMG_0012.JPG">
+  <img src="/media/cunzac/bioinformatica/users/mbarrios/proyectos/calmecac/ostua2025/camaras/input/semana35/camera04/IMG_0012.JPG" loading="lazy" alt="IMG_0012.JPG">
+  <div class="caption">IMG_0012.JPG</div>
+</a>
+<a class="card" href="/media/cunzac/bioinformatica/users/mbarrios/proyectos/calmecac/ostua2025/camaras/input/semana35/camera14/IMG_0020.JPG" data-lightbox data-caption="IMG_0020.JPG">
+  <img src="/media/cunzac/bioinformatica/users/mbarrios/proyectos/calmecac/ostua2025/camaras/input/semana35/camera14/IMG_0020.JPG" loading="lazy" alt="IMG_0020.JPG">
+  <div class="caption">IMG_0020.JPG</div>
+</a>
+<a class="card" href="/media/cunzac/bioinformatica/users/mbarrios/proyectos/calmecac/ostua2025/camaras/input/semana35/camera14/IMG_0021.JPG" data-lightbox data-caption="IMG_0021.JPG">
+  <img src="/media/cunzac/bioinformatica/users/mbarrios/proyectos/calmecac/ostua2025/camaras/input/semana35/camera14/IMG_0021.JPG" loading="lazy" alt="IMG_0021.JPG">
+  <div class="caption">IMG_0021.JPG</div>
+</a>
+<a class="card" href="/media/cunzac/bioinformatica/users/mbarrios/proyectos/calmecac/ostua2025/camaras/input/semana35/camera14/IMG_0022.JPG" data-lightbox data-caption="IMG_0022.JPG">
+  <img src="/media/cunzac/bioinformatica/users/mbarrios/proyectos/calmecac/ostua2025/camaras/input/semana35/camera14/IMG_0022.JPG" loading="lazy" alt="IMG_0022.JPG">
+  <div class="caption">IMG_0022.JPG</div>
+</a>
+<a class="card" href="/media/cunzac/bioinformatica/users/mbarrios/proyectos/calmecac/ostua2025/camaras/input/semana35/camera14/IMG_0023.JPG" data-lightbox data-caption="IMG_0023.JPG">
+  <img src="/media/cunzac/bioinformatica/users/mbarrios/proyectos/calmecac/ostua2025/camaras/input/semana35/camera14/IMG_0023.JPG" loading="lazy" alt="IMG_0023.JPG">
+  <div class="caption">IMG_0023.JPG</div>
+</a>
+<a class="card" href="/media/cunzac/bioinformatica/users/mbarrios/proyectos/calmecac/ostua2025/camaras/input/semana35/camera14/IMG_0024.JPG" data-lightbox data-caption="IMG_0024.JPG">
+  <img src="/media/cunzac/bioinformatica/users/mbarrios/proyectos/calmecac/ostua2025/camaras/input/semana35/camera14/IMG_0024.JPG" loading="lazy" alt="IMG_0024.JPG">
+  <div class="caption">IMG_0024.JPG</div>
+</a>
+<a class="card" href="/media/cunzac/bioinformatica/users/mbarrios/proyectos/calmecac/ostua2025/camaras/input/semana35/camera14/IMG_0025.JPG" data-lightbox data-caption="IMG_0025.JPG">
+  <img src="/media/cunzac/bioinformatica/users/mbarrios/proyectos/calmecac/ostua2025/camaras/input/semana35/camera14/IMG_0025.JPG" loading="lazy" alt="IMG_0025.JPG">
+  <div class="caption">IMG_0025.JPG</div>
+</a>
+<a class="card" href="/media/cunzac/bioinformatica/users/mbarrios/proyectos/calmecac/ostua2025/camaras/input/semana35/camera14/IMG_0043.JPG" data-lightbox data-caption="IMG_0043.JPG">
+  <img src="/media/cunzac/bioinformatica/users/mbarrios/proyectos/calmecac/ostua2025/camaras/input/semana35/camera14/IMG_0043.JPG" loading="lazy" alt="IMG_0043.JPG">
+  <div class="caption">IMG_0043.JPG</div>
+</a>
+<a class="card" href="/media/cunzac/bioinformatica/users/mbarrios/proyectos/calmecac/ostua2025/camaras/input/semana35/camera14/IMG_0052.JPG" data-lightbox data-caption="IMG_0052.JPG">
+  <img src="/media/cunzac/bioinformatica/users/mbarrios/proyectos/calmecac/ostua2025/camaras/input/semana35/camera14/IMG_0052.JPG" loading="lazy" alt="IMG_0052.JPG">
+  <div class="caption">IMG_0052.JPG</div>
+</a>
+<a class="card" href="/media/cunzac/bioinformatica/users/mbarrios/proyectos/calmecac/ostua2025/camaras/input/semana35/camera14/IMG_0055.JPG" data-lightbox data-caption="IMG_0055.JPG">
+  <img src="/media/cunzac/bioinformatica/users/mbarrios/proyectos/calmecac/ostua2025/camaras/input/semana35/camera14/IMG_0055.JPG" loading="lazy" alt="IMG_0055.JPG">
+  <div class="caption">IMG_0055.JPG</div>
+</a>
+<a class="card" href="/media/cunzac/bioinformatica/users/mbarrios/proyectos/calmecac/ostua2025/camaras/input/semana35/camera14/IMG_0058.JPG" data-lightbox data-caption="IMG_0058.JPG">
+  <img src="/media/cunzac/bioinformatica/users/mbarrios/proyectos/calmecac/ostua2025/camaras/input/semana35/camera14/IMG_0058.JPG" loading="lazy" alt="IMG_0058.JPG">
+  <div class="caption">IMG_0058.JPG</div>
+</a>
+<a class="card" href="/media/cunzac/bioinformatica/users/mbarrios/proyectos/calmecac/ostua2025/camaras/input/semana35/camera14/IMG_0067.JPG" data-lightbox data-caption="IMG_0067.JPG">
+  <img src="/media/cunzac/bioinformatica/users/mbarrios/proyectos/calmecac/ostua2025/camaras/input/semana35/camera14/IMG_0067.JPG" loading="lazy" alt="IMG_0067.JPG">
+  <div class="caption">IMG_0067.JPG</div>
+</a>
+<a class="card" href="/media/cunzac/bioinformatica/users/mbarrios/proyectos/calmecac/ostua2025/camaras/input/semana35/camera14/IMG_0073.JPG" data-lightbox data-caption="IMG_0073.JPG">
+  <img src="/media/cunzac/bioinformatica/users/mbarrios/proyectos/calmecac/ostua2025/camaras/input/semana35/camera14/IMG_0073.JPG" loading="lazy" alt="IMG_0073.JPG">
+  <div class="caption">IMG_0073.JPG</div>
+</a>
+<a class="card" href="/media/cunzac/bioinformatica/users/mbarrios/proyectos/calmecac/ostua2025/camaras/input/semana35/camera14/IMG_0082.JPG" data-lightbox data-caption="IMG_0082.JPG">
+  <img src="/media/cunzac/bioinformatica/users/mbarrios/proyectos/calmecac/ostua2025/camaras/input/semana35/camera14/IMG_0082.JPG" loading="lazy" alt="IMG_0082.JPG">
+  <div class="caption">IMG_0082.JPG</div>
+</a>
+<a class="card" href="/media/cunzac/bioinformatica/users/mbarrios/proyectos/calmecac/ostua2025/camaras/input/semana35/camera14/IMG_0084.JPG" data-lightbox data-caption="IMG_0084.JPG">
+  <img src="/media/cunzac/bioinformatica/users/mbarrios/proyectos/calmecac/ostua2025/camaras/input/semana35/camera14/IMG_0084.JPG" loading="lazy" alt="IMG_0084.JPG">
+  <div class="caption">IMG_0084.JPG</div>
+</a>
+<a class="card" href="/media/cunzac/bioinformatica/users/mbarrios/proyectos/calmecac/ostua2025/camaras/input/semana35/camera14/IMG_0085.JPG" data-lightbox data-caption="IMG_0085.JPG">
+  <img src="/media/cunzac/bioinformatica/users/mbarrios/proyectos/calmecac/ostua2025/camaras/input/semana35/camera14/IMG_0085.JPG" loading="lazy" alt="IMG_0085.JPG">
+  <div class="caption">IMG_0085.JPG</div>
+</a>
+<a class="card" href="/media/cunzac/bioinformatica/users/mbarrios/proyectos/calmecac/ostua2025/camaras/input/semana35/camera14/IMG_0088.JPG" data-lightbox data-caption="IMG_0088.JPG">
+  <img src="/media/cunzac/bioinformatica/users/mbarrios/proyectos/calmecac/ostua2025/camaras/input/semana35/camera14/IMG_0088.JPG" loading="lazy" alt="IMG_0088.JPG">
+  <div class="caption">IMG_0088.JPG</div>
+</a>
+<a class="card" href="/media/cunzac/bioinformatica/users/mbarrios/proyectos/calmecac/ostua2025/camaras/input/semana35/camera14/IMG_0091.JPG" data-lightbox data-caption="IMG_0091.JPG">
+  <img src="/media/cunzac/bioinformatica/users/mbarrios/proyectos/calmecac/ostua2025/camaras/input/semana35/camera14/IMG_0091.JPG" loading="lazy" alt="IMG_0091.JPG">
+  <div class="caption">IMG_0091.JPG</div>
+</a>
+<a class="card" href="/media/cunzac/bioinformatica/users/mbarrios/proyectos/calmecac/ostua2025/camaras/input/semana35/camera14/IMG_0103.JPG" data-lightbox data-caption="IMG_0103.JPG">
+  <img src="/media/cunzac/bioinformatica/users/mbarrios/proyectos/calmecac/ostua2025/camaras/input/semana35/camera14/IMG_0103.JPG" loading="lazy" alt="IMG_0103.JPG">
+  <div class="caption">IMG_0103.JPG</div>
+</a>
+<a class="card" href="/media/cunzac/bioinformatica/users/mbarrios/proyectos/calmecac/ostua2025/camaras/input/semana35/camera14/IMG_0109.JPG" data-lightbox data-caption="IMG_0109.JPG">
+  <img src="/media/cunzac/bioinformatica/users/mbarrios/proyectos/calmecac/ostua2025/camaras/input/semana35/camera14/IMG_0109.JPG" loading="lazy" alt="IMG_0109.JPG">
+  <div class="caption">IMG_0109.JPG</div>
+</a>
+<a class="card" href="/media/cunzac/bioinformatica/users/mbarrios/proyectos/calmecac/ostua2025/camaras/input/semana35/camera14/IMG_0110.JPG" data-lightbox data-caption="IMG_0110.JPG">
+  <img src="/media/cunzac/bioinformatica/users/mbarrios/proyectos/calmecac/ostua2025/camaras/input/semana35/camera14/IMG_0110.JPG" loading="lazy" alt="IMG_0110.JPG">
+  <div class="caption">IMG_0110.JPG</div>
+</a>
+<a class="card" href="/media/cunzac/bioinformatica/users/mbarrios/proyectos/calmecac/ostua2025/camaras/input/semana35/camera14/IMG_0111.JPG" data-lightbox data-caption="IMG_0111.JPG">
+  <img src="/media/cunzac/bioinformatica/users/mbarrios/proyectos/calmecac/ostua2025/camaras/input/semana35/camera14/IMG_0111.JPG" loading="lazy" alt="IMG_0111.JPG">
+  <div class="caption">IMG_0111.JPG</div>
+</a>
+<a class="card" href="/media/cunzac/bioinformatica/users/mbarrios/proyectos/calmecac/ostua2025/camaras/input/semana35/camera14/IMG_0127.JPG" data-lightbox data-caption="IMG_0127.JPG">
+  <img src="/media/cunzac/bioinformatica/users/mbarrios/proyectos/calmecac/ostua2025/camaras/input/semana35/camera14/IMG_0127.JPG" loading="lazy" alt="IMG_0127.JPG">
+  <div class="caption">IMG_0127.JPG</div>
+</a>
+<a class="card" href="/media/cunzac/bioinformatica/users/mbarrios/proyectos/calmecac/ostua2025/camaras/input/semana35/camera14/IMG_0128.JPG" data-lightbox data-caption="IMG_0128.JPG">
+  <img src="/media/cunzac/bioinformatica/users/mbarrios/proyectos/calmecac/ostua2025/camaras/input/semana35/camera14/IMG_0128.JPG" loading="lazy" alt="IMG_0128.JPG">
+  <div class="caption">IMG_0128.JPG</div>
+</a>
+<a class="card" href="/media/cunzac/bioinformatica/users/mbarrios/proyectos/calmecac/ostua2025/camaras/input/semana35/camera14/IMG_0129.JPG" data-lightbox data-caption="IMG_0129.JPG">
+  <img src="/media/cunzac/bioinformatica/users/mbarrios/proyectos/calmecac/ostua2025/camaras/input/semana35/camera14/IMG_0129.JPG" loading="lazy" alt="IMG_0129.JPG">
+  <div class="caption">IMG_0129.JPG</div>
+</a>
+<a class="card" href="/media/cunzac/bioinformatica/users/mbarrios/proyectos/calmecac/ostua2025/camaras/input/semana35/camera14/IMG_0130.JPG" data-lightbox data-caption="IMG_0130.JPG">
+  <img src="/media/cunzac/bioinformatica/users/mbarrios/proyectos/calmecac/ostua2025/camaras/input/semana35/camera14/IMG_0130.JPG" loading="lazy" alt="IMG_0130.JPG">
+  <div class="caption">IMG_0130.JPG</div>
+</a>
+<a class="card" href="/media/cunzac/bioinformatica/users/mbarrios/proyectos/calmecac/ostua2025/camaras/input/semana35/camera14/IMG_0142.JPG" data-lightbox data-caption="IMG_0142.JPG">
+  <img src="/media/cunzac/bioinformatica/users/mbarrios/proyectos/calmecac/ostua2025/camaras/input/semana35/camera14/IMG_0142.JPG" loading="lazy" alt="IMG_0142.JPG">
+  <div class="caption">IMG_0142.JPG</div>
+</a>
+<a class="card" href="/media/cunzac/bioinformatica/users/mbarrios/proyectos/calmecac/ostua2025/camaras/input/semana35/camera14/IMG_0151.JPG" data-lightbox data-caption="IMG_0151.JPG">
+  <img src="/media/cunzac/bioinformatica/users/mbarrios/proyectos/calmecac/ostua2025/camaras/input/semana35/camera14/IMG_0151.JPG" loading="lazy" alt="IMG_0151.JPG">
+  <div class="caption">IMG_0151.JPG</div>
+</a>
+<a class="card" href="/media/cunzac/bioinformatica/users/mbarrios/proyectos/calmecac/ostua2025/camaras/input/semana35/camera14/IMG_0152.JPG" data-lightbox data-caption="IMG_0152.JPG">
+  <img src="/media/cunzac/bioinformatica/users/mbarrios/proyectos/calmecac/ostua2025/camaras/input/semana35/camera14/IMG_0152.JPG" loading="lazy" alt="IMG_0152.JPG">
+  <div class="caption">IMG_0152.JPG</div>
+</a>
+<a class="card" href="/media/cunzac/bioinformatica/users/mbarrios/proyectos/calmecac/ostua2025/camaras/input/semana35/camera14/IMG_0153.JPG" data-lightbox data-caption="IMG_0153.JPG">
+  <img src="/media/cunzac/bioinformatica/users/mbarrios/proyectos/calmecac/ostua2025/camaras/input/semana35/camera14/IMG_0153.JPG" loading="lazy" alt="IMG_0153.JPG">
+  <div class="caption">IMG_0153.JPG</div>
+</a>
+<a class="card" href="/media/cunzac/bioinformatica/users/mbarrios/proyectos/calmecac/ostua2025/camaras/input/semana35/camera14/IMG_0154.JPG" data-lightbox data-caption="IMG_0154.JPG">
+  <img src="/media/cunzac/bioinformatica/users/mbarrios/proyectos/calmecac/ostua2025/camaras/input/semana35/camera14/IMG_0154.JPG" loading="lazy" alt="IMG_0154.JPG">
+  <div class="caption">IMG_0154.JPG</div>
+</a>
+<a class="card" href="/media/cunzac/bioinformatica/users/mbarrios/proyectos/calmecac/ostua2025/camaras/input/semana35/camera14/IMG_0157.JPG" data-lightbox data-caption="IMG_0157.JPG">
+  <img src="/media/cunzac/bioinformatica/users/mbarrios/proyectos/calmecac/ostua2025/camaras/input/semana35/camera14/IMG_0157.JPG" loading="lazy" alt="IMG_0157.JPG">
+  <div class="caption">IMG_0157.JPG</div>
+</a>
+<a class="card" href="/media/cunzac/bioinformatica/users/mbarrios/proyectos/calmecac/ostua2025/camaras/input/semana35/camera14/IMG_0184.JPG" data-lightbox data-caption="IMG_0184.JPG">
+  <img src="/media/cunzac/bioinformatica/users/mbarrios/proyectos/calmecac/ostua2025/camaras/input/semana35/camera14/IMG_0184.JPG" loading="lazy" alt="IMG_0184.JPG">
+  <div class="caption">IMG_0184.JPG</div>
+</a>
+<a class="card" href="/media/cunzac/bioinformatica/users/mbarrios/proyectos/calmecac/ostua2025/camaras/input/semana35/camera14/IMG_0187.JPG" data-lightbox data-caption="IMG_0187.JPG">
+  <img src="/media/cunzac/bioinformatica/users/mbarrios/proyectos/calmecac/ostua2025/camaras/input/semana35/camera14/IMG_0187.JPG" loading="lazy" alt="IMG_0187.JPG">
+  <div class="caption">IMG_0187.JPG</div>
+</a>
+
+</div> <!-- .grid -->
+</div> <!-- .container -->
+
+<div id="lightbox" class="lightbox-overlay" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="lightbox-close" id="lightbox-close" aria-label="Cerrar">&times;</div>
+  <div class="lightbox-content">
+    <img id="lightbox-img" src="" alt="">
+    <div class="lightbox-caption" id="lightbox-caption"></div>
+  </div>
+</div>
+
+
+<script>
+(function(){
+  const overlay = document.getElementById('lightbox');
+  const img = document.getElementById('lightbox-img');
+  const caption = document.getElementById('lightbox-caption');
+  const closeBtn = document.getElementById('lightbox-close');
+
+  function show(src, text){
+    img.src = src;
+    img.alt = text || '';
+    caption.textContent = text || '';
+    overlay.classList.add('visible');
+    overlay.focus();
+  }
+  function hide(){
+    overlay.classList.remove('visible');
+    setTimeout(()=>{ img.src = ''; }, 200);
+  }
+
+  document.addEventListener('click', function(e){
+    const t = e.target.closest('[data-lightbox]');
+    if(t){
+      e.preventDefault();
+      show(t.getAttribute('href'), t.getAttribute('data-caption'));
+    }
+  }, false);
+
+  overlay.addEventListener('click', function(e){
+    if(e.target === overlay || e.target === closeBtn) hide();
+  });
+
+  document.addEventListener('keydown', function(e){
+    if(e.key === 'Escape') hide();
+  });
+})();
+</script>
+
+</body>
+</html>

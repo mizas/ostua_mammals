@@ -1,0 +1,471 @@
+---
+title: "Vignette Title"
+author: "Vignette Author"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Vignette Title}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r}
+library(dplyr)
+library(tidyr)
+library(stringr)
+library(htmlwidgets)
+```
+
+```{r}
+setwd("/media/cunzac/bioinformatica/users/mbarrios/proyectos/calmecac/ostua2025/camaras/")
+```
+
+```{r}
+clasificacion<-read.csv("/media/cunzac/bioinformatica/users/mbarrios/proyectos/calmecac/ostua2025/camaras/output/classifications.csv")
+predicciones<-read.csv("/media/cunzac/bioinformatica/users/mbarrios/proyectos/calmecac/ostua2025/camaras/output/predictions_summary.csv")
+```
+
+```{r}
+predicciones <- predicciones %>%
+  # separar el string en una lista de elementos
+  mutate(parts = str_split(top_class, ";")) %>%
+  # quedarnos solo con los últimos 7 elementos de cada fila
+  mutate(parts = lapply(parts, function(x) tail(x, 6))) %>%
+  # convertir lista a columnas
+  unnest_wider(parts, names_sep = "_") %>%
+  # eliminar campos
+  select(-bbox_x,-bbox_y,-bbox_h,-bbox_w,-model_version,
+         -prediction,-top_class,-second_class) %>%
+  rename(
+    clase     = parts_1,
+    orden     = parts_2,
+    familia   = parts_3,
+    genero    = parts_4,
+    especie   = parts_5,
+    nombre_comun = parts_6) %>%
+  mutate(parts2 = str_split(filepath, "/")) %>%
+  mutate(parts2 = lapply(parts2, function(x) tail(x, 3))) %>%
+  # convertir lista a columnas
+  unnest_wider(parts2, names_sep = "_") %>%
+  rename(
+    semana     = parts2_1,
+    camara     = parts2_2,
+    archivo   = parts2_3
+  ) %>%
+  filter(nombre_comun != "bird" & nombre_comun != "blank" & clase == "mammalia")
+ predicciones 
+```
+
+```{r}
+predicciones$ruta <- paste0(
+  "/media/cunzac/bioinformatica/users/mbarrios/proyectos/calmecac/ostua2025/camaras/",
+  predicciones$filepath
+)
+
+# escribr CSV con header 'filepath'
+write.csv(data.frame(filepath = predicciones$ruta), "/media/cunzac/bioinformatica/users/mbarrios/proyectos/calmecac/ostua2025/camaras/output/ruta.csv", row.names = FALSE, quote = FALSE)
+
+```
+
+
+
+```{r}
+output_dir <- "/media/cunzac/bioinformatica/users/mbarrios/proyectos/calmecac/ostua2025/camaras/output/species"
+dir.create(output_dir, showWarnings = FALSE, recursive = TRUE)
+
+# obtener nombres únicos ordenados
+especies <- predicciones$nombre_comun %>%
+  unique() %>%
+  sort()
+
+for (sp in especies) {
+
+  # crear nombre de archivo seguro (sin espacios)
+  archivo <- str_replace_all(sp, " ", "_")
+  archivo <- str_replace_all(archivo, "[^A-Za-z0-9_]", "")  # eliminar caracteres raros
+
+  # filtrar rutas de esa especie
+  temp <- predicciones %>%
+    filter(nombre_comun == sp)
+
+  # escribir CSV
+  write.csv(
+    data.frame(filepath = temp$ruta),
+    file = file.path(output_dir, paste0(archivo, ".csv")),
+    row.names = FALSE,
+    quote = FALSE
+  )
+
+  message("✅ Generado: ", archivo, ".csv")
+}
+
+```
+
+```{r}
+# ruta donde están los CSV por especie
+species_dir <- "/media/cunzac/bioinformatica/users/mbarrios/proyectos/calmecac/ostua2025/camaras/output/species"
+
+# obtener lista de archivos CSV
+csv_files <- list.files(species_dir, pattern = "\\.csv$", full.names = TRUE)
+
+for (csv in csv_files) {
+
+  cmd <- sprintf(
+    'python3 /media/cunzac/bioinformatica/users/mbarrios/proyectos/calmecac/ostua2025/camaras/output/make_mosaic.py "%s" --lightbox',
+    csv
+  )
+
+  message("👉 Ejecutando: ", cmd)
+
+  system(cmd)
+}
+```
+
+
+```{r}
+setwd("/media/cunzac/bioinformatica/users/mbarrios/proyectos/calmecac/ostua2025/camaras/output/species/")
+system("python3 make_mosaic.py american_beaver.csv --lightbox")
+```
+
+```{r}
+predicciones$nombre_comun %>%
+  unique() %>%
+  sort()
+```
+
+```{r}
+predicciones_cor_01<-predicciones %>%
+  filter(!nombre_comun %in% c(
+    "american beaver",
+    "american black bear",
+    "brown bear",
+    "canis species",
+    "common wildebeest",
+    "dingo",
+    "domestic cat",
+    "domestic cattle",
+    "domestic dog",
+    "domestic goat",
+    "domestic horse",
+    "eastern gray squirrel",
+    "eurasian badger",
+    "european roe deer",
+    "guenther's dik-dik",
+    "human",
+    "kangaroo family",
+    "red deer",
+    "red fox",
+    "white-lipped peccary",
+    "white-tailed deer",
+    "wild boar")
+    ) 
+```
+
+
+
+Reemplazar
+"brown rat"             por rodent 
+"crab-eating raccoon"   por northern raccoon 
+"dasypus species"       por nine-banded armadillo
+"dhole"                 por jaguarundi 
+"egyptian mongoose"     por jaguarundi 
+"felis species"         por jaguarundi 
+"grey wolf"             por coyote 
+"mammal"                por rodent 
+"muridae family"        por rodent 
+"muskrat"               por common opossum  
+"ocelot"                por margay 
+"white-footed mouse"    por rodent 
+
+Completar campos
+"striped skunk"         por Mephitis macroura Hooded skunk *
+"giant otter"           por nutria *
+"beech marten"          por conepatus leuconotus *
+
+
+revisar nuevamente
+"eastern cottontail"
+
+```{r}
+#Corregir las anotaciones
+
+reemplazos <- tribble(
+  ~original,              ~nuevo,
+  "brown rat",            "rodent",
+  "crab-eating raccoon",  "northern raccoon",
+  "dasypus species",      "nine-banded armadillo",
+  "dhole",                "jaguarundi",
+  "egyptian mongoose",    "jaguarundi",
+  "felis species",        "jaguarundi",
+  "grey wolf",            "coyote",
+  "mammal",               "rodent",
+  "muridae family",       "rodent",
+  "muskrat",              "common opossum",
+  "ocelot",               "margay",
+  "white-footed mouse",   "rodent"
+)
+
+
+predicciones_cor_02 <- predicciones_cor_01 %>%
+  left_join(reemplazos, by = c("nombre_comun" = "original")) %>%
+  left_join(
+    predicciones_cor_01 %>%
+      select(nombre_comun, familia_dest = familia, genero_dest = genero, especie_dest = especie) %>%
+      distinct(nombre_comun, .keep_all = TRUE),
+    by = c("nuevo" = "nombre_comun")
+  ) %>%
+  mutate(
+    nombre_comun = if_else(!is.na(nuevo), nuevo, nombre_comun),
+    familia = if_else(!is.na(nuevo), familia_dest, familia),
+    genero = if_else(!is.na(nuevo), genero_dest, genero),
+    especie = if_else(!is.na(nuevo), especie_dest, especie)
+  ) %>%
+  select(-nuevo, -familia_dest, -genero_dest, -especie_dest)
+```
+
+
+
+```{r}
+# Verificar los cambios
+nrow(predicciones_cor_01 %>%
+  filter(nombre_comun == "jaguarundi"))
+nrow(predicciones_cor_02 %>%
+  filter(nombre_comun == "jaguarundi"))
+```
+
+
+
+
+
+```{r}
+predicciones_cor_03 <- predicciones_cor_02
+
+predicciones_cor_03 <- predicciones_cor_03 %>%
+  mutate(
+    especie= if_else(nombre_comun == "striped skunk", 
+                               "macroura",
+                          especie),
+    nombre_comun= if_else(nombre_comun == "striped skunk", 
+                               "hooded skunk",
+                               nombre_comun)
+    ) 
+
+predicciones_cor_03 <- predicciones_cor_03 %>%
+  mutate(
+    genero= if_else(nombre_comun == "giant otter", 
+                               "lontra",
+                               genero),
+    especie= if_else(nombre_comun == "giant otter", 
+                               "longicaudis",
+                               especie),
+    nombre_comun= if_else(nombre_comun == "giant otter", 
+                               "neotropical river otter",
+                               nombre_comun)
+    )   
+
+predicciones_cor_03 <- predicciones_cor_03 %>%
+  mutate(
+    familia = if_else(nombre_comun == "beech marten",
+                     "mephitidae",
+                     familia),
+    genero = if_else(nombre_comun == "beech marten",
+                     "conepatus",
+                     genero),
+    especie = if_else(nombre_comun == "beech marten",
+                      "leuconotus",
+                      especie),
+    nombre_comun = if_else(nombre_comun == "beech marten",
+                           "eastern hog-nosed skunk",
+                           nombre_comun)
+  )  
+```
+
+```{r}
+nrow(predicciones_cor_03 %>%
+  filter(nombre_comun == "striped skunk"))
+nrow(predicciones_cor_03 %>%
+  filter(nombre_comun == "hooded skunk"))
+predicciones_cor_03 %>%
+  filter(nombre_comun == "hooded skunk")
+```
+
+
+```{r}
+predicciones_cor_03
+```
+Obtener los metadatos EXIF de las imagenes
+```{r}
+library("exifr")
+```
+```{r}
+files <- read.csv(
+  "/media/cunzac/bioinformatica/users/mbarrios/proyectos/calmecac/ostua2025/camaras/output/ruta.csv",
+  stringsAsFactors = FALSE,
+  check.names = FALSE
+)
+
+# 2) Comprobar columna filepath
+if (!"filepath" %in% names(files)) stop("No se encontró la columna 'filepath'")
+
+# 3) Limpiar rutas vacías y NA
+files <- files %>%
+  mutate(filepath = trimws(as.character(filepath))) %>%
+  filter(!is.na(filepath) & filepath != "")
+
+# 4) Comprobar existencia de archivos y reportar
+files$exists <- file.exists(files$filepath)
+table_exists <- table(files$exists)
+print(table_exists)
+# Si quieres ver ejemplos de los que faltan:
+if (any(!files$exists)) {
+  message("Algunos archivos no existen. Ejemplos:")
+  print(head(files$filepath[!files$exists], 10))
+}
+
+# 5) Usar solo las rutas que existen para leer EXIF
+paths_valid <- files$filepath[files$exists]
+
+exif_data <- NULL
+if (length(paths_valid) > 0) {
+  # proteger la lectura con tryCatch para no romper si hay un archivo corrupto
+  exif_data <- tryCatch(
+    read_exif(paths_valid, tags = c("SourceFile", "DateTimeOriginal", "Make", "Model", "GPSLatitude", "GPSLongitude")),
+    error = function(e) {
+      message("read_exif falló: ", e$message)
+      return(NULL)
+    }
+  )
+} else {
+  message("No hay archivos válidos para leer EXIF.")
+}
+
+# 6) Si exif_data es NULL o tiene 0 filas, crear df vacío con SourceFile para el join
+if (is.null(exif_data) || nrow(exif_data) == 0) {
+  exif_data <- data.frame(SourceFile = character(0), stringsAsFactors = FALSE)
+}
+
+# 7) Unir EXIF al dataframe original (conservando filas originales)
+files_info <- files %>%
+  left_join(exif_data, by = c("filepath" = "SourceFile"))
+
+# 8) Opcional: quitar columna 'exists' si no la quieres
+ files_info <- files_info %>% select(-exists)
+
+# 9) Guardar resultado
+#write.csv(df_final, "exif_joined_output.csv", row.names = FALSE)
+
+# 10) Vista rápida
+print(head(files_info))
+```
+
+```{r}
+files_info
+```
+
+
+```{r}
+files_info_2<-files_info %>%
+  rename(filepath_largo = filepath) %>%
+  # separar el string en una lista de elementos
+  mutate(filepath = str_split(filepath_largo, "camaras")) %>%
+  # quedarnos solo con los últimos 7 elementos de cada fila
+  mutate(filepath = lapply(filepath, function(x) tail(x, 1))) %>%
+  # convertir lista a columnas
+  unnest_wider(filepath, names_sep = "_")  %>%
+  rename(filepath = filepath_1) %>%
+  mutate(filepath = sub("^/", "", filepath))
+```
+
+Juntar files_info_2 con predicciones_cor_03
+
+```{r}
+names(files_info_2)
+names(predicciones_cor_03)
+```
+
+```{r}
+predicciones_cor_03_join <- files_info_2 %>%
+  inner_join(predicciones_cor_03, by = "filepath")
+predicciones_cor_03_join
+```
+
+```{r}
+#martin2 = camera08
+#Corregir el nombre de Phylander opposum
+
+predicciones_cor_03_join <- predicciones_cor_03_join %>%
+  mutate(
+    camara = if_else(camara == "martin2",
+                     "camera08",
+                     camara),
+    camara = if_else(camara == "Martin2",
+                     "camera08",
+                     camara),
+    semana = if_else(semana == "camera11",
+                     "semana35",
+                     semana),
+    camara = if_else(camara == "100_BTCF",
+                     "camera11",
+                     camara),
+    genero = if_else(genero == "metachirus",
+                     "phylander",
+                     genero),
+    especie = if_else(especie == "nudicaudatus",
+                      "opposum",
+                      especie)
+    ) %>%
+  filter(nombre_comun != "rodent")
+
+```
+
+
+
+Coordenadas de las camaras
+
+```{r}
+coordenadas <- data.frame(camara = c("camera01","camera02","camera03","camera04",
+                                     "camera05","camera06","camera07","camera08",
+                                     "camera09","camera10","camera11","camera12",
+                                     "camera13","camera14","camera15","camera16",
+                                     "camera17","camera18"),
+                          y = c(14.462231,14.461551,14.461596,14.446105,
+                                     14.446112,14.439435,14.314804,14.314156,
+                                     14.313374,14.312703,14.526147,14.517374,
+                                     14.416121,14.415581,14.441688,14.313815,
+                                     14.441632,14.275435),
+                          x = c(-89.724983,-89.723393,-89.723299,-89.697295,
+                                     -89.696074,-89.701372,-89.652719,-89.652292,
+                                     -89.652254,-89.655425,-89.640259,-89.643434,
+                                     -89.768584,-89.772389,-89.690875,-89.651641,
+                                     -89.690618,-89.7316451),
+                          lugar = c("CAT","CAT","CAT","IX",
+                                     "IX","IX","GUI","GUI",
+                                     "GUI","GUI","AB","AB",
+                                     "QB1","QB2","IX","GUI",
+                                     "IX","TIU"),
+                          municipio = c("SCM","SCM","SCM","SCM",
+                                     "SCM","SCM","ASM","ASM",
+                                     "ASM","ASM","AB","AB",
+                                     "SCM","SCM","SCM","ASM",
+                                     "SCM","ASM")
+                          )
+coordenadas
+```
+Juntar la bd con el df de coordenadas
+```{r}
+predicciones_cor_04_join <- predicciones_cor_03_join %>%
+  left_join(coordenadas %>% select(camara, municipio, lugar, x, y), by = "camara")
+predicciones_cor_04_join
+```
+Generar cuadro de especies, lugar y horario.
+```{r}
+cuadro_detecciones<-predicciones_cor_04_join %>%
+    select(familia,genero,especie,municipio,lugar,DateTimeOriginal) %>%
+  rename(captura = DateTimeOriginal)
+
+write.csv(cuadro_detecciones, file="output/resultados/cuadro_detecciones.csv")
+```
+
+
+
+
